@@ -15,6 +15,7 @@ import ForgotPassword from './components/ForgotPassword';
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -65,6 +66,8 @@ export default function SignIn(props) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
+  const navigate = useNavigate();
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -94,10 +97,17 @@ export default function SignIn(props) {
         body: JSON.stringify(loginInfo)
       });
       const result = await response.json();
-      if (result.success === true) {
-        alert("Logged in Succesfully Yahoo!")
-      }
-    } catch {
+      const { success, message, jwtToken, name, error } = result;
+      if (success) {
+          localStorage.setItem('token', jwtToken);
+          localStorage.setItem('loggedInUser', name);
+          setTimeout(() => {
+              navigate('/home')
+          }, 1000)
+      }else{
+        setPasswordError(true);
+        setPasswordErrorMessage(message);
+      }} catch {
       console.log('error');
 
     }
