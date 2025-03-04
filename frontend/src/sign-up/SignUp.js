@@ -113,6 +113,7 @@ export default function SignUp(props) {
       "name": data.get('name'),
       "email": data.get('email'),
       "password": data.get('password'),
+      "tokens": []
     };
     try {
       const url = `http://localhost:8080/auth/signup`;

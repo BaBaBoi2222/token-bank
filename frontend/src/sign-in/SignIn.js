@@ -11,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-import ForgotPassword from './components/ForgotPassword';
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 import { Link as RouterLink } from 'react-router-dom';
@@ -101,6 +100,7 @@ export default function SignIn(props) {
       if (success) {
           localStorage.setItem('token', jwtToken);
           localStorage.setItem('loggedInUser', name);
+          localStorage.setItem('loggedInMail', loginInfo.email);
           setTimeout(() => {
               navigate('/home')
           }, 1000)
@@ -200,7 +200,6 @@ export default function SignIn(props) {
                 color={passwordError ? 'error' : 'green'}
               />
             </FormControl>
-            <ForgotPassword open={open} handleClose={handleClose} />
             <Button
               type="submit"
               fullWidth

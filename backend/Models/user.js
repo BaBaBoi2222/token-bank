@@ -14,7 +14,8 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    tokens: [{ name: String, value: String }]
 });
 
 const UserModel = mongoose.model('users', UserSchema);
