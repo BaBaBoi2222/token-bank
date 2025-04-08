@@ -25,7 +25,7 @@ const Saved = () => {
   useEffect(() => {
     const fetchTokens = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/auth/getT", {
+        const response = await axios.get("https://token-bank-phi.vercel.app/auth/getT", {
           headers: {
             authorization: `${localStorage.getItem("token")}`,
             email: localStorage.getItem("loggedInMail"),
@@ -65,7 +65,7 @@ const Saved = () => {
     const deleteToken = async () => {
       try {
         await axios.delete(
-          `http://localhost:8080/auth/deleteT/${localStorage.getItem('loggedInMail')}/${deletingToken.name}`,
+          `https://token-bank-phi.vercel.app/auth/deleteT/${localStorage.getItem('loggedInMail')}/${deletingToken.name}`,
           {
             headers: { authorization: `${localStorage.getItem("token")}` },
           }

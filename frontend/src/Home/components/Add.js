@@ -24,7 +24,7 @@ const Add = ({ onTokenAdded }) => {
     setMessage({ type: "", text: "" });
 
     try {
-      const response = await axios.post("http://localhost:8080/auth/addT", formData);
+      const response = await axios.post("https://token-bank-phi.vercel.app/auth/addT", formData);
 
       if (response.data.success) {
         setMessage({ type: "success", text: "Token added successfully!" });
