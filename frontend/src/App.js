@@ -3,7 +3,7 @@ import SignIn from './sign-in/SignIn.js'
 import SignUp from './sign-up/SignUp.js'
 import RefreshHandler from './RefreshHandler';
 import { useState } from 'react';
-import Home from './Home/Home.js'
+import Home from './home/home.js'
 import Saved from './Home/components/Saved.js'
 import Add from './Home/components/Add.js'
 function App() {
